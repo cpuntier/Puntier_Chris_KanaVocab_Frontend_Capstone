@@ -1,9 +1,11 @@
 import { useState, useContext } from 'react';
 import CharacterChart from '../components/CharacterChart';
-import { SelectedContext } from '../App';
+import { KanaContext } from '../App';
 
 export default function Chart(props) {
-    const [kanaState, setKanaState] = useState("hiragana")
+    // const [kanaState, setKanaState] = useState("hiragana")
+    const [kanaState,setKanaState] = useContext(KanaContext);
+
     return (
             <>
                 <div style={{ display: "flex", justifyContent: "center" }}>

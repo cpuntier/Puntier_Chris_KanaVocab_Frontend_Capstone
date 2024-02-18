@@ -7,9 +7,6 @@ export default function KanaTiles(props) {
 
     const [selected, setSelected] = useContext(SelectedContext);
 
-
-
-
     const path = useLocation().pathname;
     const checkRef = useRef(null);
 

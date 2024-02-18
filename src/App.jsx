@@ -8,23 +8,27 @@ import Selection from './pages/Selection'
 import StartGame from './pages/StartGame'
 
 export const SelectedContext = createContext()
+export const KanaContext = createContext()
 
 function App() {
-  const [selected2, setSelected2] = useState([]);
+  const [selected, setSelected] = useState([]);
+  const [kanaState, setKanaState] = useState("hiragana");
 
   return (
     <>
 
-      <SelectedContext.Provider value = {[selected2,setSelected2]}>
+      <KanaContext.Provider value={[kanaState,setKanaState]}>
+        <SelectedContext.Provider value={[selected, setSelected]}>
 
-      <NavBar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/chart" element={<Chart />} />
-        <Route path="/selection" element={<Selection />} />
-        <Route path="/startgame" element={<StartGame />} />
-      </Routes>
-      </SelectedContext.Provider>
+          <NavBar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/chart" element={<Chart />} />
+            <Route path="/selection" element={<Selection />} />
+            <Route path="/startgame" element={<StartGame />} />
+          </Routes>
+        </SelectedContext.Provider>
+      </KanaContext.Provider>
     </>
   )
 }
