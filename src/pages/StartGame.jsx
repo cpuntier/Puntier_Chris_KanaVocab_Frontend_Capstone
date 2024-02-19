@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect, useState, useRef } from "react"
 import { SelectedContext, KanaContext } from "../App"
 import axios from "axios";
 import Answer from "../components/Answer";
@@ -12,66 +12,67 @@ export default function StartGame(props) {
     const [shuffled, setShuffled] = useState([...selected.flat(1).sort(() => Math.random() - 0.5)])
     const [answers, setAnswers] = useState([]);
     const [inputState, setInputState] = useState(null);
+    const [answer, setAnswer] = useState(null)
+    const [score, setScore] = useState(0);
+    const inputRef = useRef(null);
+
 
 
     useEffect(() => {
-        setAnswers([shuffled[current], ...shuffled.filter((item) => item.jp_kana != shuffled[current].jp_kana).slice(0, 3)].sort(() => Math.random() - 0.5))
+        if (shuffled.length > current) {
+            setAnswer([shuffled[current].jp_kana]);
+            setAnswers([shuffled[current], ...shuffled.filter((item) => item.jp_kana != shuffled[current].jp_kana).slice(0, 3)].sort(() => Math.random() - 0.5))
+        }
     }, [current])
 
 
-
-
-
-    // useEffect(() => {
-    // async function getanswers() {
-    //     try {
-    //         const answers = await axios.get("http://localhost:8000/" + kanaState + "/random");
-    //         console.log(answers.data);
-    //         setanswers(answers.data.filter((item)=> item.jp_kana !=shuffled[current].jp_kana
-    //         ));
-    //     } catch (error) {
-    //         console.log(error)
-    //     }
-
-    // };
-    // getanswers();
-    // shuffled = selected.flat(1);
-    // shuffled = shuffled.sort(() => Math.random() - 0.5);
-    // setSelected([...shuffled]),
-    // () => {
-    //     selected.filter()
-    // }
-
-
-    // }, [])
+    function inputHandler(){
+        if(inputRef.current.value == shuffled[current].en_romaji){
+            setScore(score+1);
+            setCurrent(current+1);
+            inputRef.current.value = "";
+        }else{
+            setCurrent(current+1);
+        }
+    }
 
 
 
     return (<>
-    {inputState?  <div>
-            {shuffled[current].jp_kana}
-            {inputState === "multi" ? "Multiple choice" : inputState==="direct" ? "Input" : <></>}
-            {selected.length > 0 && answers.length > 0 ?
-                <>
-                    <Answer kana={answers[0]} current={current} setCurrent={setCurrent} />
-                    <Answer kana={answers[1]} current={current} setCurrent={setCurrent} />
-                    <Answer kana={answers[2]} current={current} setCurrent={setCurrent} />
-                    <Answer kana={answers[3]} current={current} setCurrent={setCurrent} />
-                </> : <>Loading</>
+        {current >= shuffled.length ? <>Results {score}/{shuffled.length}</> : <>
+
+            {inputState ? <div>
+                {shuffled[current].jp_kana}{score}
+                {inputState === "multi" ?
+                    (selected.length > 0 && answers.length > 0 ?
+                        <>
+                            <Answer kana={answers[0]} current={current} setCurrent={setCurrent} answer={answer} score={score} setScore={setScore} />
+                            <Answer kana={answers[1]} current={current} setCurrent={setCurrent} answer={answer} score={score} setScore={setScore} />
+                            <Answer kana={answers[2]} current={current} setCurrent={setCurrent} answer={answer} score={score} setScore={setScore} />
+                            <Answer kana={answers[3]} current={current} setCurrent={setCurrent} answer={answer} score={score} setScore={setScore} />
+                        </> : <>Loading</>)
+                    : inputState === "direct" ?
+                        <>
+                            <input type="text" placeholder="Enter your answer here..." ref = {inputRef}/>
+                            <button onClick={inputHandler}>Submit</button>
+                        </>
+                        : <>Something Broke:/</>}
+            </div>
+
+
+                : <>
+                    <button onClick={() => setInputState("multi")}>
+                        Multiple Choice
+                    </button>
+                    <button onClick={() => setInputState("direct")}>
+                        Direct Input</button>
+                </>
             }
 
-        </div> 
-    
-    
-    : <>
-    <button onClick={()=>setInputState("multi")}>
-        Multiple Choice        
-    </button>
-    <button onClick={() => setInputState("direct")}>
-    Direct Input</button>
-    </>
-}
-        
+
+
+        </>}
+
 
     </>)
 }

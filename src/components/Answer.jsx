@@ -1,7 +1,6 @@
-export default function Answer(props){
+export default function Answer({ kana, current, setCurrent, answer, score, setScore }) {
 
-    return(
-        <button onClick={() => props.setCurrent(props.current + 1)}>{props.kana.jp_kana}</button>
-        // <>{props.kana.jp_kana}</>
+    return (
+        <button onClick={() => { setCurrent(current + 1); if (kana.jp_kana === answer[0]) { setScore(score+1)} }}>{kana.en_romaji}</button>
     )
 }
