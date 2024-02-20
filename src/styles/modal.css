@@ -1,16 +1,49 @@
-.Modal {
+/* .Modal {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
     background-color: #242424;
     border: 2px solid rgb(240, 240, 240);
     border-radius: 12px;
-    position:  absolute;
+    position:  fixed;
     width: 400px;
-    top: 50%;
-    left: 50%;
-    /* bottom: 70px;  */
     height: 250px;
+ } */
+
+
+/* .ModalContainer{
+    display: flex;
+    justify-content: center;
+}
+*/
+
+.Modal {
+    position: fixed;
+    inset: 0; /* inset sets all 4 values (top right bottom left) much like how we set padding, margin etc., */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+    z-index: 999;
+    padding: 40px 20px 20px;
+  } 
+
+  
+.modalContent {
+    width:20%;
+    height: 20%;
+    background-color: #282c34;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid white;
+    border-radius: 30px
+  
+
 }

@@ -31,6 +31,7 @@ function App() {
             <Route path="/flashcards" element = {<FlashCardGroups/>}/>
             <Route path="/flashcards/:groupName" element = {<FlashCards/>}/>;
           </Routes>
+
         </SelectedContext.Provider>
       </KanaContext.Provider>
     </>
