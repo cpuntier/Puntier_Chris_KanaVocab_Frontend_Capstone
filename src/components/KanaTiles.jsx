@@ -31,10 +31,17 @@ export default function KanaTiles(props) {
                 <div style={{ fontSize: "20pt", display: "flex", justifyContent: "space-between", width: "60vw" }}>
 
                     {props.row.map((item) => {
-                        return <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", width: "7vw", height: "7vh" }}>
-                            <div style={{ backgroundColor: "gray", width: "5vw", height: "6vh", margin:"auto", display:"flex", flexDirection:"column", justifyContent:"center"}}>
+                        return <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", width: "7vw", height: "8vh" }}>
+                            <div style={{ backgroundColor: "gray", width: "5vw", height: "7vh", margin:"auto", display:"flex", flexDirection:"column", justifyContent:"center"}}>
+                                <div style={{fontSize: "25pt"}}>
                                 {item.jp_kana}
+                                </div>
+                                <div style={{fontSize:"12pt"}}>
+                                {item.en_romaji}
+                                </div>
+
                             </div>
+
                         </div>
 
                     })}

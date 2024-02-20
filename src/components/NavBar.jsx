@@ -22,7 +22,9 @@ export default function NavBar() {
                 <Link to="/chart">
                     <button onClick={clearSelected}>Chart</button>
                 </Link>
+                <Link to="/flashcards">
                 <button onClick={clearSelected}>FlashCards</button>
+                </Link>
             </div>
         </>
     )

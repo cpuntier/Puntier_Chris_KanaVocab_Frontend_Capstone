@@ -11,7 +11,7 @@ export default function StartGame(props) {
     const [current, setCurrent] = useState(0);
     const [shuffled, setShuffled] = useState([...selected.flat(1).sort(() => Math.random() - 0.5)])
     const [answers, setAnswers] = useState([]);
-    const [inputState, setInputState] = useState(null);
+    const [inputState, setInputState] = useState("multi");
     const [answer, setAnswer] = useState(null)
     const [score, setScore] = useState(0);
     const inputRef = useRef(null);
@@ -26,13 +26,13 @@ export default function StartGame(props) {
     }, [current])
 
 
-    function inputHandler(){
-        if(inputRef.current.value == shuffled[current].en_romaji){
-            setScore(score+1);
-            setCurrent(current+1);
+    function inputHandler() {
+        if (inputRef.current.value == shuffled[current].en_romaji) {
+            setScore(score + 1);
+            setCurrent(current + 1);
             inputRef.current.value = "";
-        }else{
-            setCurrent(current+1);
+        } else {
+            setCurrent(current + 1);
         }
     }
 
@@ -42,21 +42,34 @@ export default function StartGame(props) {
         {current >= shuffled.length ? <>Results {score}/{shuffled.length}</> : <>
 
             {inputState ? <div>
-                {shuffled[current].jp_kana}{score}
+
+                <div style={{ fontSize: "10vw" }}>
+                    {shuffled[current].jp_kana}
+                </div>
+
                 {inputState === "multi" ?
                     (selected.length > 0 && answers.length > 0 ?
                         <>
-                            <Answer kana={answers[0]} current={current} setCurrent={setCurrent} answer={answer} score={score} setScore={setScore} />
-                            <Answer kana={answers[1]} current={current} setCurrent={setCurrent} answer={answer} score={score} setScore={setScore} />
-                            <Answer kana={answers[2]} current={current} setCurrent={setCurrent} answer={answer} score={score} setScore={setScore} />
-                            <Answer kana={answers[3]} current={current} setCurrent={setCurrent} answer={answer} score={score} setScore={setScore} />
+                            <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-start", height: "250px", margin: "auto" }}>
+                                <div style={{ border: "solid 1px white" }}>
+                                    <Answer kana={answers[0]} current={current} setCurrent={setCurrent} answer={answer} score={score} setScore={setScore} />
+                                    <Answer kana={answers[1]} current={current} setCurrent={setCurrent} answer={answer} score={score} setScore={setScore} />
+                                </div>
+                                <div style={{ border: "solid 1px red" }}>
+                                    <Answer kana={answers[2]} current={current} setCurrent={setCurrent} answer={answer} score={score} setScore={setScore} />
+                                    <Answer kana={answers[3]} current={current} setCurrent={setCurrent} answer={answer} score={score} setScore={setScore} />
+                                </div>
+                            </div>
                         </> : <>Loading</>)
                     : inputState === "direct" ?
                         <>
-                            <input type="text" placeholder="Enter your answer here..." ref = {inputRef}/>
+                            <input type="text" placeholder="Enter your answer here..." ref={inputRef} />
                             <button onClick={inputHandler}>Submit</button>
                         </>
                         : <>Something Broke:/</>}
+                
+                {score}
+
             </div>
 
 
