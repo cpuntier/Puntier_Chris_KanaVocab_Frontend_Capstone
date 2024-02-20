@@ -27,6 +27,11 @@ export default function FlashCards() {
 
     async function onCloseHandler(){
         console.log(jpRef.current.value);
+        setShowModal(false);
+
+    }
+
+    async function onSubmitHandler(){
         try {
             const addedCard =await axios.post("http://localhost:8000/flashcards", {
                 en_side :engRef.current.value,
@@ -47,7 +52,6 @@ export default function FlashCards() {
     }
 
 
-
     return (
         <>
             <div>
@@ -55,7 +59,7 @@ export default function FlashCards() {
                 <br></br>
                 <input type="text" placeholder="Search here..." onChange={(e) => setFilteredText(e.target.value)} />
             </div>
-            <div style={{ display: "flex", flexWrap: "wrap" }}>
+            <div style={{ display: "flex", flexWrap: "wrap", border:"solid 1px white"}}>
                 {groups.map((group) => {
                     if (filteredText.length > 1) {
                         if (group.toLowerCase().includes(filteredText.toLowerCase())) {
@@ -65,13 +69,15 @@ export default function FlashCards() {
                         return <Groups groupName={group} />
                     }
                 })}
-                <div onClick={() => setShowModal(true)} style={{ fontSize: "10vw", width: "300px", height: "200px", border: "solid 1px black", display: "flex", flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
+                <div onClick={() => setShowModal(true)} style={{ fontSize: "10vw", width: "15vw", height: "20vh", border: "solid 1px black", display: "flex", flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
                     +
                 </div>
+                <div className="ModalContainer">
                 {showModal && createPortal(
-                    <FlashCardModal onClose={onCloseHandler} engRef = {engRef} jpRef = {jpRef} groupRef ={groupRef}/>,
+                    <FlashCardModal onClose={onCloseHandler} engRef = {engRef} jpRef = {jpRef} groupRef ={groupRef} onSubmit={onSubmitHandler}/>,
                     document.body
                 )}
+                </div>
             </div>
 
 

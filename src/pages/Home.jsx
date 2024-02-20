@@ -8,11 +8,13 @@ export default function Home() {
 
 
     return (
-        <><h1>This is the home Page</h1>
+        <><h1>Welcome to KanaVocab</h1>
+        <h2>This is to be used as a resource for learning Japanese. Hover over the buttons below to find out what they do!</h2>
 
             <Link to="/selection">
             <button>Start Game</button>
             </Link>
+            
         </>
     )
 }
