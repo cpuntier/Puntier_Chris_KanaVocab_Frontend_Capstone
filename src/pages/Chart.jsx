@@ -13,7 +13,7 @@ export default function Chart(props) {
                     <button onClick={() => {setKanaState("hiragana");setSelected([])}}>Hiragana</button>
                     <button onClick={() => {setKanaState("katakana");setSelected([])}}>Katakana</button>
                 </div>
-                <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}>
+                <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center",  height:"90%"}}>
                     <CharacterChart kana={kanaState} selected={props.selected} setSelected={props.setSelected} />
 
                 </div>

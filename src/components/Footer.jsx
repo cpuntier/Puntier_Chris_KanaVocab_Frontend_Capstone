@@ -1,0 +1,11 @@
+import "../styles/footer.css"
+
+export default function Footer(){
+    return(
+        <>
+        <div className="footer">
+        <p>About - Linkedin - Github - Email</p>
+        </div>
+        </>
+    )
+}

@@ -1,7 +1,7 @@
-export default function Answer({ kana, current, setCurrent, answer, score, setScore }) {
+export default function Answer({ kana, current, setCurrent, answer, score, setScore,report,setReport }) {
 
     function clickHandler(e) {
-        if (kana.jp_kana === answer[0]) {
+        if (kana.jp_kana == answer[0].jp_kana) {
             const node = e.target;
             e.target.style.backgroundColor = "green";
             setTimeout(() => {
@@ -11,13 +11,33 @@ export default function Answer({ kana, current, setCurrent, answer, score, setSc
                 node.style.border = "";
 
             }, 1000);
+            setReport([...report,
+                {
+                    kana: answer[0].jp_kana,
+                    answer:answer[0].en_romaji,
+                    yourAnswer:kana.en_romaji,
+                    result : true
+                }
+            ])
+    
         } else {
+            console.log("kana:",kana.jp_kana,"answer:",answer.jp_kana)
             const node = e.target;
             e.target.style.backgroundColor = "red";
             setTimeout(() => {
                 setCurrent(current + 1);
                 node.style.backgroundColor = "#1a1a1a";
             }, 1000);
+            setReport([...report,
+                {
+                    kana: answer[0].jp_kana,
+                    answer:answer[0].en_romaji,
+                    yourAnswer:kana.en_romaji,
+                    result : false
+                }
+            ])
+    
+    
         }
     }
 
