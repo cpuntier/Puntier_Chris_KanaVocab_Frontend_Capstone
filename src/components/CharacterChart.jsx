@@ -44,7 +44,7 @@ export default function CharacterChart(props) {
             </>
         })
         
-        : "no"}
+        : "Loading"}
 
         </>
     )
