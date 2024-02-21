@@ -1,7 +1,7 @@
 # KanaVoab Ver C Front End
 
-Frontend Deployed Live Link: https://splendid-kheer-1d4f7c.netlify.app/
-Backend Deployed Live Link :https://puntier-chris-kanavocab-backend-capstone.onrender.com/
+##### Frontend Deployed Live Link: https://splendid-kheer-1d4f7c.netlify.app/
+##### Backend Deployed Live Link :https://puntier-chris-kanavocab-backend-capstone.onrender.com/
 
 
 ---
