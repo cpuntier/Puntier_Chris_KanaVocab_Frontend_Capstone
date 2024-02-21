@@ -4,6 +4,7 @@ import { FaLinkedin } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 
 
+//basic footer with info to display on every page
 export default function Footer() {
     const path = useLocation()
     console.log("Footer is htere0", path)

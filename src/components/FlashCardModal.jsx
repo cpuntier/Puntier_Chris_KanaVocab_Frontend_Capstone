@@ -5,6 +5,8 @@ export default function FlashCardModal({ onClose, engRef, jpRef, groupRef, onSub
     const params = useParams();
     console.log(params.groupName);
     return (
+
+        // creats a modal using conditonal rendering in order to provide user an interface to add flashcards
         <div className="Modal">
             <div className="modalContent">
                 <div>Add a new flash card</div>

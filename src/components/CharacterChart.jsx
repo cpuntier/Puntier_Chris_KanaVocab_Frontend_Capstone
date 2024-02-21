@@ -8,7 +8,7 @@ export default function CharacterChart(props) {
     const [rows, setRows] = useState([]);
 
     useEffect(() => {
-        async function getCharacters() {
+        async function getCharacters() { //used tomake api call to obtain characters
             try {
                 const characters = await axios.get("https://puntier-chris-kanavocab-backend-capstone.onrender.com/" + props.kana)
                 // console.log(characters.data);
@@ -26,7 +26,7 @@ export default function CharacterChart(props) {
         } getCharacters();
     }, [props.kana])
 
-    useEffect(() =>{
+    useEffect(() =>{ //used to manipulate data to make it more useable
         let rows = [];
         for(let i = 1; i<12; i++){
             rows.push(characters.filter((item) => item.row === i))
@@ -37,7 +37,7 @@ export default function CharacterChart(props) {
     return (
         <>
         {characters.length > 0 ? 
-        rows.map((row) => {
+        rows.map((row) => { // maps over data to create chart 
 
             return <>
             <KanaTiles  key = {row.row} row={row} selected ={props.selected} setSelected = {props.setSelected}/>

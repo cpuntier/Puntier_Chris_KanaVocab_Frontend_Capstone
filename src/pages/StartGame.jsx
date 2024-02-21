@@ -107,7 +107,6 @@ export default function StartGame(props) {
                         </>
                         : <>Something Broke:/</>}
                 
-                {score}
 
             </div>
 

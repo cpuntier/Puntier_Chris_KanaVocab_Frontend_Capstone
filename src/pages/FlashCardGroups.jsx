@@ -4,7 +4,7 @@ import axios from "axios"
 import {createPortal} from 'react-dom'
 import FlashCardModal from "../components/FlashCardModal"
 
-export default function FlashCards() {
+export default function FlashCards() { 
     const [groups, setGroups] = useState([])
     const [filteredText, setFilteredText] = useState("")
     const [showModal, setShowModal] = useState(false);
@@ -31,7 +31,7 @@ export default function FlashCards() {
 
     }
 
-    async function onSubmitHandler(){
+    async function onSubmitHandler(){ // used to make post request to add flashcard
         try {
             const addedCard =await axios.post("https://puntier-chris-kanavocab-backend-capstone.onrender.com/flashcards", {
                 en_side :engRef.current.value,

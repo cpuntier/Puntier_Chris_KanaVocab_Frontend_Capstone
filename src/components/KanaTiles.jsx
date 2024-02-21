@@ -7,10 +7,10 @@ export default function KanaTiles(props) {
 
     const [selected, setSelected] = useContext(SelectedContext);
 
-    const path = useLocation().pathname;
+    const path = useLocation().pathname; //used for conditional rendering
     const checkRef = useRef(null);
 
-    function checkHandler(){
+    function checkHandler(){ //used to check direct input
         if(!checkRef.current.checked){
             console.log("Is false")
             setSelected(selected.filter((item) => item != props.row))
@@ -24,13 +24,16 @@ export default function KanaTiles(props) {
         <>
             <div style={{ display: "flex" }}>
                 <div style={{ width: "2vw", display:"flex",alignItems:"center" }}>
+                    {/* checkbox only included when in certain pages */}
                     {path === "/selection" ? <input ref = {checkRef} onChange={checkHandler} type="checkbox" name="" id="" /> : <></>}
 
                 </div>
 
                 <div style={{ fontSize: "20pt", display: "flex", justifyContent: "space-between", width: "60vw" }}>
 
-                    {props.row.map((item) => {
+
+{/* maping over row to make character chart */}
+                    {props.row.map((item) => { 
                         return <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", width: "7vw", height: "8vh" }}>
                             <div style={{ backgroundColor: "gray", width: "5vw", height: "7vh", margin:"auto", display:"flex", flexDirection:"column", justifyContent:"center"}}>
                                 <div style={{fontSize: "25pt"}}>

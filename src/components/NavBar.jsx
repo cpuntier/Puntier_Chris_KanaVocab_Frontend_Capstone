@@ -15,6 +15,7 @@ export default function NavBar() {
 
     return (
         <>
+        {/* navbar to allow users to navigate to three pages below at all times */}
         <h1 style={{textAlign:"center"}}>KanaVocab Ver C</h1>
         <div style={{border:"solid 1px white", display:"flex", justifyContent:"space-around"}}>
                 <Link to="/">

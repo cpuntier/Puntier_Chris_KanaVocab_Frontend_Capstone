@@ -1,7 +1,7 @@
 export default function Answer({ kana, current, setCurrent, answer, score, setScore,report,setReport }) {
 
-    function clickHandler(e) {
-        if (kana.jp_kana == answer[0].jp_kana) {
+    function clickHandler(e) { //handle answering question
+        if (kana.jp_kana == answer[0].jp_kana) { //question is right
             const node = e.target;
             e.target.style.backgroundColor = "green";
             setTimeout(() => {
@@ -21,7 +21,7 @@ export default function Answer({ kana, current, setCurrent, answer, score, setSc
             ])
     
         } else {
-            console.log("kana:",kana.jp_kana,"answer:",answer.jp_kana)
+            // console.log("kana:",kana.jp_kana,"answer:",answer.jp_kana) // question is wrong
             const node = e.target;
             e.target.style.backgroundColor = "red";
             setTimeout(() => {
@@ -42,7 +42,8 @@ export default function Answer({ kana, current, setCurrent, answer, score, setSc
     }
 
     return (
-        <div className="Answer" style={{ margin: "1em", fontSize: "20pt" }}>
+        // Display appropriate answer choice
+        <div className="Answer" style={{ margin: "1em", fontSize: "20pt" }}> 
             <button
                 style={{ width: "15vw", height: "5vh", margin: "10" }}
 
