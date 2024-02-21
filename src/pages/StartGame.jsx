@@ -5,6 +5,7 @@ import Answer from "../components/Answer";
 import { AiOutlineSelect } from "react-icons/ai";
 import { BsInputCursorText } from "react-icons/bs";
 import ScoreReport from "../components/ScoreReport";
+import Footer from "../components/Footer";
 
 
 export default function StartGame(props) {
@@ -112,6 +113,7 @@ export default function StartGame(props) {
 
 
                 : <>
+                <div style={{display:"flex",justifyContent:"center", alignItems:"center",height:"30vh"}}>
                     <button onClick={() => setInputState("multi")} style={{width:"10vw",height:"15vh"}}>
                     <AiOutlineSelect size={70}/><br></br>
                         Multiple Choice
@@ -120,6 +122,7 @@ export default function StartGame(props) {
                     <button onClick={() => setInputState("direct")} style={{width:"10vw", height:"15vh"}}>
                     <BsInputCursorText size={70}/><br></br>
                         Direct Input</button>
+                        </div>
                 </>
             }
 
@@ -127,6 +130,6 @@ export default function StartGame(props) {
 
         </>}
 
-
     </>)
+
 }

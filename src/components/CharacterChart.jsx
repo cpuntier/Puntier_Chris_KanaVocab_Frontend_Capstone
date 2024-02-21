@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import axios from 'axios'
 import KanaTiles from "./KanaTiles"
+import Footer from "./Footer";
 
 export default function CharacterChart(props) {
     const [characters, setCharacters] = useState([]);
@@ -9,7 +10,7 @@ export default function CharacterChart(props) {
     useEffect(() => {
         async function getCharacters() {
             try {
-                const characters = await axios.get("http://localhost:8000/" + props.kana)
+                const characters = await axios.get("https://puntier-chris-kanavocab-backend-capstone.onrender.com/" + props.kana)
                 // console.log(characters.data);
                 let sortedArray = characters.data.sort((a,b) => {
                     if(a.row === b.row){

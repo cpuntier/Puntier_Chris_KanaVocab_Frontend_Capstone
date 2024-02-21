@@ -11,18 +11,18 @@ export default function Selection() {
     return (
         <>
             <h1>Check which lines you would like to test</h1>
+            <div>
             <Chart />
 
-
-
             <Link to="/startgame">
-                {selected.length > 0 ? <button>Start Game</button> :
+                {selected.flat(1).length > 3 ? <button>Start Game</button> :
                     <div className="tooltip">
 
                         <button disabled>Start Game</button>
-                        <p className="tooltiptoptext">Must select at least one line</p>
+                        <p className="tooltiptoptext">Must select more characters!</p>
                     </div>}
 
             </Link>
+            </div>
         </>)
 }

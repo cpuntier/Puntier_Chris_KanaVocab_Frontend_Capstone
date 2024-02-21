@@ -24,6 +24,7 @@ function App() {
         <SelectedContext.Provider value={[selected, setSelected]}>
 
           <NavBar />
+          <div style={{height:"100vh", position:"relative"}}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/chart" element={<Chart />} />
@@ -33,9 +34,13 @@ function App() {
             <Route path="/flashcards/:groupName" element={<FlashCards />} />;
           </Routes>
 
+          </div>
+          <div>
+          <Footer />
+
+          </div>
         </SelectedContext.Provider>
       </KanaContext.Provider>
-      <Footer />
     </>
   )
 }

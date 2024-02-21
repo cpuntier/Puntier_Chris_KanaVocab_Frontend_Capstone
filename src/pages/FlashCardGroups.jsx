@@ -15,7 +15,7 @@ export default function FlashCards() {
     useEffect(() => {
         async function getGroups() {
             try {
-                const response = await axios.get("http://localhost:8000/flashcards/groups")
+                const response = await axios.get("https://puntier-chris-kanavocab-backend-capstone.onrender.com/flashcards/groups")
                 setGroups(response.data)
 
             } catch (error) {
@@ -33,7 +33,7 @@ export default function FlashCards() {
 
     async function onSubmitHandler(){
         try {
-            const addedCard =await axios.post("http://localhost:8000/flashcards", {
+            const addedCard =await axios.post("https://puntier-chris-kanavocab-backend-capstone.onrender.com/flashcards", {
                 en_side :engRef.current.value,
                 jp_side :jpRef.current.value,
                 group_name:groupRef.current.value

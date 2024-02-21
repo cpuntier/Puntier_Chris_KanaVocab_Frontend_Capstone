@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import { useState, useContext } from "react";
 
 import "../styles/tooltip.css"
-
+import Footer from "../components/Footer"
 
 
 export default function Home() {
