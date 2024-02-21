@@ -2,6 +2,9 @@ import { useContext, useEffect, useState, useRef } from "react"
 import { SelectedContext, KanaContext } from "../App"
 import axios from "axios";
 import Answer from "../components/Answer";
+import { AiOutlineSelect } from "react-icons/ai";
+import { BsInputCursorText } from "react-icons/bs";
+
 
 export default function StartGame(props) {
     const [selected, setSelected] = useContext(SelectedContext);
@@ -11,7 +14,7 @@ export default function StartGame(props) {
     const [current, setCurrent] = useState(0);
     const [shuffled, setShuffled] = useState([...selected.flat(1).sort(() => Math.random() - 0.5)])
     const [answers, setAnswers] = useState([]);
-    const [inputState, setInputState] = useState("multi");
+    const [inputState, setInputState] = useState(null);
     const [answer, setAnswer] = useState(null)
     const [score, setScore] = useState(0);
     const inputRef = useRef(null);
@@ -26,13 +29,19 @@ export default function StartGame(props) {
     }, [current])
 
 
-    function inputHandler() {
+    function inputHandler(e) {
+        const node = e.target;
         if (inputRef.current.value == shuffled[current].en_romaji) {
             setScore(score + 1);
             setCurrent(current + 1);
             inputRef.current.value = "";
         } else {
-            setCurrent(current + 1);
+            inputRef.current.style.backgroundColor = "red";
+            setTimeout(()=>{setCurrent(current+1);
+                inputRef.current.style.backgroundColor= "#242424";
+                inputRef.current.value = ""
+            },2000)
+
         }
     }
 
@@ -55,7 +64,7 @@ export default function StartGame(props) {
                                     <Answer kana={answers[0]} current={current} setCurrent={setCurrent} answer={answer} score={score} setScore={setScore} />
                                     <Answer kana={answers[1]} current={current} setCurrent={setCurrent} answer={answer} score={score} setScore={setScore} />
                                 </div>
-                                <div style={{ border: "solid 1px red" }}>
+                                <div style={{ border: "solid 1px white" }}>
                                     <Answer kana={answers[2]} current={current} setCurrent={setCurrent} answer={answer} score={score} setScore={setScore} />
                                     <Answer kana={answers[3]} current={current} setCurrent={setCurrent} answer={answer} score={score} setScore={setScore} />
                                 </div>
@@ -64,7 +73,7 @@ export default function StartGame(props) {
                     : inputState === "direct" ?
                         <>
                             <input type="text" placeholder="Enter your answer here..." ref={inputRef} />
-                            <button onClick={inputHandler}>Submit</button>
+                            <button onClick={(e ) => inputHandler(e)}>Submit</button>
                         </>
                         : <>Something Broke:/</>}
                 
@@ -74,10 +83,13 @@ export default function StartGame(props) {
 
 
                 : <>
-                    <button onClick={() => setInputState("multi")}>
+                    <button onClick={() => setInputState("multi")} style={{width:"10vw",height:"15vh"}}>
+                    <AiOutlineSelect size={70}/><br></br>
                         Multiple Choice
                     </button>
-                    <button onClick={() => setInputState("direct")}>
+
+                    <button onClick={() => setInputState("direct")} style={{width:"10vw", height:"15vh"}}>
+                    <BsInputCursorText size={70}/><br></br>
                         Direct Input</button>
                 </>
             }

@@ -55,11 +55,13 @@ export default function FlashCards() {
     return (
         <>
             <div>
-                These are flashcards
+                Click on a flash card group below to see your flashcards
                 <br></br>
-                <input type="text" placeholder="Search here..." onChange={(e) => setFilteredText(e.target.value)} />
+                Search: <input type="text" placeholder="Search here..." onChange={(e) => setFilteredText(e.target.value)} />
+                <br></br>
             </div>
-            <div style={{ display: "flex", flexWrap: "wrap", border:"solid 1px white"}}>
+            <br />
+            <div style={{ display: "flex", flexWrap: "wrap", border:"solid 1px white", width:"90vw"}}>
                 {groups.map((group) => {
                     if (filteredText.length > 1) {
                         if (group.toLowerCase().includes(filteredText.toLowerCase())) {
@@ -79,8 +81,6 @@ export default function FlashCards() {
                 )}
                 </div>
             </div>
-
-
 
         </>)
 }

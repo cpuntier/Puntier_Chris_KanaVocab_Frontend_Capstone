@@ -70,9 +70,9 @@ export default function FlashCards() {
     return (
 
         <>
-            Here is the {params.groupName} group
+            <p style={{textAlign:"center"}}>Here is the {params.groupName} group </p>
             <br></br>
-            <div style={{border: "solid white 1px", display:"flex", flexWrap:"wrap", width:"76vw"}}>
+            <div style={{border: "solid white 1px", display:"flex", flexWrap:"wrap"}}>
             {flashCards.map((card) => <FlashCard card = {card}/>)}
             <div onClick={() => setShowModal(true)} style={{ fontSize: "10vw", width: "15vw", height: "20vh", border: "solid 1px black", display: "flex", flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
                     +

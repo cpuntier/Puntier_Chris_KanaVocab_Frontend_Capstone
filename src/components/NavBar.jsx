@@ -15,7 +15,8 @@ export default function NavBar() {
 
     return (
         <>
-            <div style={{ display: "flex" }}>
+        <h1 style={{textAlign:"center"}}>KanaVocab Ver C</h1>
+        <div style={{border:"solid 1px white", display:"flex", justifyContent:"space-around"}}>
                 <Link to="/">
                     <button onClick={clearSelected}>Home</button>
                 </Link>

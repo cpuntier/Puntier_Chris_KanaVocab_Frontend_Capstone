@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import axios from 'axios'
 import KanaTiles from "./KanaTiles"
-import {SelectedContext} from "../App"
 
 export default function CharacterChart(props) {
     const [characters, setCharacters] = useState([]);
