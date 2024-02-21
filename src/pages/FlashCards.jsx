@@ -70,7 +70,7 @@ export default function FlashCards() {
     return (
 
         <>
-            <p style={{textAlign:"center"}}>Here is the {params.groupName} group </p>
+            <h2 style={{textAlign:"center"}}>Here is the {params.groupName} group </h2>
             <br></br>
             <div style={{border: "solid white 1px", display:"flex", flexWrap:"wrap"}}>
             {flashCards.map((card) => <FlashCard card = {card}/>)}

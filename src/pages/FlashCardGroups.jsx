@@ -55,7 +55,7 @@ export default function FlashCards() {
     return (
         <>
             <div>
-                Click on a flash card group below to see your flashcards
+                <h2>Click on a flash card group below to see your flashcards</h2>
                 <br></br>
                 Search: <input type="text" placeholder="Search here..." onChange={(e) => setFilteredText(e.target.value)} />
                 <br></br>
